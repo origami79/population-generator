@@ -1,6 +1,5 @@
 import { genders, lifespan, infertility, firstChildBirth } from '@/stores/generation/rngTables'
-import { roll6, roll10, roll20 } from '@/stores/generation/dice'
-import type { Person } from '@/types/types';
+// import { roll6, roll10, roll20 } from '@/stores/generation/dice'
 
 const generatePerson = function(data: { birthYear: number, motherId?: string }) {
   const birthYear = data.birthYear
@@ -71,26 +70,26 @@ const findAgeOfFirstBirth = function() {
   return age
 };
 
-const findNextBirth = function(currentAge: number) {
-  let years;
-  if (currentAge <= 34) {
-    const firstRoll = roll6();
-    const secondRoll = roll6();
-    years = firstRoll < secondRoll ? firstRoll : secondRoll;
-  } else if (currentAge <=40) {
-    const firstRoll = roll10();
-    const secondRoll = roll20();
-    years = firstRoll < secondRoll ? firstRoll : secondRoll;
-  } else {
-    const firstRoll = roll20();
-    const secondRoll = roll20();
-    years = firstRoll < secondRoll ? firstRoll : secondRoll;
-  }
-  if (years == 1) {
-    const multiplesRoll = roll20();
-    years = multiplesRoll == 1 ? years : 1;
-  }
-  return years
-}
+// const findNextBirth = function(currentAge: number) {
+//   let years;
+//   if (currentAge <= 34) {
+//     const firstRoll = roll6();
+//     const secondRoll = roll6();
+//     years = firstRoll < secondRoll ? firstRoll : secondRoll;
+//   } else if (currentAge <=40) {
+//     const firstRoll = roll10();
+//     const secondRoll = roll20();
+//     years = firstRoll < secondRoll ? firstRoll : secondRoll;
+//   } else {
+//     const firstRoll = roll20();
+//     const secondRoll = roll20();
+//     years = firstRoll < secondRoll ? firstRoll : secondRoll;
+//   }
+//   if (years == 1) {
+//     const multiplesRoll = roll20();
+//     years = multiplesRoll == 1 ? years : 1;
+//   }
+//   return years
+// }
 
 export { generatePerson }

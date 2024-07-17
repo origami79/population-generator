@@ -1,4 +1,4 @@
-type Person = {
+type PersonType = {
   id: string
   birthYear: number
   deathYear: number
@@ -13,7 +13,7 @@ type Person = {
 }
 
 interface Census {
-  [key:string]: Person
+  [key:string]: PersonType
 }
 
-export type { Person, Census }
+export type { PersonType, Census }

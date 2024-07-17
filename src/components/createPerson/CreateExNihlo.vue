@@ -8,7 +8,9 @@
         <input type="number" v-model="birthYear" >
         <span class="input-group-btn">
          <button @click="createExNihlo(birthYear)" id="generate-person" class="btn btn-default">Generate</button>
+         <button @click="savePerson()" id="save-person">Save</button>
        </span>
+       <PersonDisplay v-if="personData" :personData="personData"/>
       </div>
       <table id="person-display">
       </table>
@@ -21,15 +23,22 @@ import { ref } from 'vue';
 
 import { usePopulationStore } from '@/stores/population';
 
+import PersonDisplay from './PersonDisplay.vue';
+
 const birthYear = ref<number>(0)
+const personData = ref()
 
 const populationStore = usePopulationStore();
-const {census, count, addPerson } = populationStore
+const { addPerson, generateNewPerson } = populationStore
 
 const createExNihlo = (year:number) => {
-  addPerson(year)
-  console.log("component", {year, count, census})
+  const newPerson = generateNewPerson(year)
+  personData.value = newPerson
 };
+
+const savePerson = () => {
+  addPerson(personData.value)
+}
 </script>
 
 <style scoped>
