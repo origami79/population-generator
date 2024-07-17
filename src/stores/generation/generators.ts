@@ -15,7 +15,7 @@ const generatePerson = function(data: { birthYear: number, motherId?: string }) 
   }
   const ageAtFirstChildBirth = findAgeOfFirstBirth();
   let firstBirthYear;
-  if (sex == "F" && ageAtFirstChildBirth <= infertilityAge) {
+  if (sex == "F" && ageAtFirstChildBirth <= infertilityAge && ageAtFirstChildBirth <= lifespan) {
     firstBirthYear = birthYear + ageAtFirstChildBirth
   } else {
     firstBirthYear = null;

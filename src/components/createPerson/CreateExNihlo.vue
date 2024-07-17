@@ -9,8 +9,11 @@
         <span class="input-group-btn">
          <button @click="createExNihlo(birthYear)" id="generate-person" class="btn btn-default">Generate</button>
          <button @click="savePerson()" id="save-person">Save</button>
+         <button v-if="!modifyToggle" @click="toggleModify()" id="open-modify">Modify Before Saving</button>
+         <button v-else @click="toggleModify()" id="close-modify">Cancel Modifying</button>
        </span>
-       <PersonDisplay v-if="personData" :personData="personData"/>
+       <PersonDisplay v-if="personData && !modifyToggle" :personData="personData"/>
+       <EditPerson @modifyPerson="updateModified" v-if="personData && modifyToggle" :personData="personData"/>
       </div>
       <table id="person-display">
       </table>
@@ -24,9 +27,20 @@ import { ref } from 'vue';
 import { usePopulationStore } from '@/stores/population';
 
 import PersonDisplay from './PersonDisplay.vue';
+import EditPerson from './EditPerson.vue'
 
 const birthYear = ref<number>(0)
 const personData = ref()
+const modifyToggle = ref(false)
+
+const toggleModify = () => {
+  modifyToggle.value = !modifyToggle.value
+}
+
+const updateModified = (data: { _rawValue: any; }) => {
+  personData.value = data._rawValue
+  toggleModify()
+}
 
 const populationStore = usePopulationStore();
 const { addPerson, generateNewPerson } = populationStore
