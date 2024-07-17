@@ -1,14 +1,12 @@
 <template>
   <main>
-    <TheWelcome />
-    <CensusTable :population="census" />
+    <h3>create people here</h3>
+    <createExNihlo />
   </main>
 </template>
 
 <script setup lang="ts">
-
-import TheWelcome from '../components/TheWelcome.vue'
-import CensusTable from '../components/census/CensusTable.vue'
+import createExNihlo from '@/components/createPerson/CreateExNihlo.vue';
 
 import { usePopulationStore } from '@/stores/population';
 

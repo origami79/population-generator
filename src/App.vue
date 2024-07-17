@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import TopHeader from './components/TopHeader.vue'
-</script>
-
 <template>
   <header>
     <div class="wrapper">
@@ -11,12 +6,18 @@ import TopHeader from './components/TopHeader.vue'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/create">Create New Person</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
 </template>
+  
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import TopHeader from './components/TopHeader.vue'
+</script>
 
 <style scoped>
 header {
