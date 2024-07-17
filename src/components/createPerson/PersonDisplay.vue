@@ -29,5 +29,14 @@
 </script>
 
 <style scoped>
+  table {
+    border: 1px solid black;
+    width: 95%;
+  }
 
+  td, th {
+    border: 1px solid black;
+    width: 50%;
+    text-align: center
+  }
 </style>

@@ -1,3 +1,5 @@
+import { Person } from "./classes"
+
 type PersonType = {
   id: string
   birthYear: number
@@ -13,7 +15,7 @@ type PersonType = {
 }
 
 interface Census {
-  [key:string]: PersonType
+  [key:string]: PersonType | Person
 }
 
 export type { PersonType, Census }
